@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The seas roar</title>
+  <style>
+    
+    .content {
+      height: 2000px;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      let isScrolling = false;
+      let targetPosition = 0;
+      let startPosition = 0;
+      let animationDuration = 500;
+      let startTime = null;
+
+      function smoothScroll(distance) {
+        startPosition = window.pageYOffset;
+        targetPosition = startPosition + distance; 
+
+        function animate(currentTime) {
+          if (startTime === null) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+          const progress = Math.min(timeElapsed / animationDuration, 1);
+          const easeProgress = progress < 0.5 ? 2 * progress * progress : (4 - 2 * progress) * progress - 1;
+          
+          window.scrollTo(0, startPosition + (targetPosition - startPosition) * easeProgress);
+          
+          if (timeElapsed < animationDuration) {
+            requestAnimationFrame(animate);
+          } else {
+            isScrolling = false;
+          }
+        }
+
+        if (!isScrolling) {
+          isScrolling = true;
+          startTime = null;
+          requestAnimationFrame(animate);
+        }
+      }
+
+      window.addEventListener('wheel', function(event) {
+        const cushionDistance = 400; // Change this value to adjust padding 
+        if (event.deltaY > 0) {
+          smoothScroll(cushionDistance);
+        } else if (event.deltaY < 0) {
+          smoothScroll(-cushionDistance);
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Smooth scrolling from here on out</h1>
+  <div class="content"></div>
+</body>
+</html>

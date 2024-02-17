@@ -1,0 +1,507 @@
+    /* Met la police en Monserrat sans-serif pour le document entier, enlève les marges et le rembourrage par défaut */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Définit la propriété display à none en masquant l'élément */
+    .menu-toggle {
+      display: none;
+    }
+
+    /* Définit un défilement fluide */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Menu */
+
+    /* Définit un libellé de menu en position fixe avec des propriétés de positionnement spécifiques */
+    .menu-label {
+      position: fixed;
+      top: 15px;
+      right: 50px;
+      cursor: pointer;
+      font-size: 30px;
+      z-index: 999;
+    }
+
+    .menu-label span:hover{
+      background-color: #BF340D;
+    }
+
+    /* Classe les éléments span dans la classe menu en donnant des dimensions, la couleur la marge ainsi 
+    que des propriétes de transition */
+    .menu-label span {
+      display: block;
+      width: 30px;
+      height: 4px;
+      background-color: #EF481A;
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+
+    /* Définit le premier enfant span de l'étiquette de menu lorsque le boutton est coché.
+    Permet ensuite d'appliquer un effet de rotation de 45 degrées */
+    .menu-toggle:checked ~ .menu-label span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+
+    /* Définit le deuxième enfant span de l'étiquette de menu lorsque le boutton est coché.
+    Permet ensuite d'appliquer un effet de pour faire disparître le boutton */
+    .menu-toggle:checked ~ .menu-label span:nth-child(2) {
+      opacity: 0;
+    }
+
+    /* Définit le troisième enfant span de l'étiquette de menu lorsque le boutton est coché.
+    Permet ensuite d'appliquer un effet de rotation à contre sens de 45 degrées */
+    .menu-toggle:checked ~ .menu-label span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+
+    /* Style de menu */
+    .menu {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      width: 200px;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.2);
+      transform: translateX(100%); /* Permet de déplacer vers la gauche */
+      transition: transform 0.3s ease; /* Prend 0.3 secondes pour se déplacer  */
+      z-index: 998;
+    }
+
+    /* Permet de créer une liste non ordonnée dans la classe de menu
+    Enlève les styles, la marge et le remplissage */
+    .menu ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Permet de définir les éléments de la liste dans la classe de menu
+    Ajoute un remplissage et une bordure inférieure */
+    .menu li {
+      padding: 10px;
+      border-bottom: 1px solid #E6FAFC ;
+    }
+
+    /* Permet de styler les éléments d'ancrage à l'interieur des élémentrs de liste de la classe de menu
+    Supprime la décoration de texte et définit la couleur du texte */
+    .menu li a {
+      text-decoration: none;
+      color: #E6FAFC;
+    }
+
+    /* Permet de déninir la clase de menu lorsque le bouton est coché */
+    .menu-toggle:checked ~ .menu {
+      transform: translateX(0%); /* Permet de déplacer vers la droite */
+    }
+
+    /* Permet de styler le bouton circulaire */
+    .circle-button{
+      /* Position absolue pour positionnement précis */
+      position: absolute;
+      /* Décalage depuis le bas et horizontal au centre */
+      bottom: 30px;
+      left: 50%;
+      /* Décalage horizontal pour centrer le bouton */
+      transform: translateX(-50%);
+      /* Largeur et hauteur */
+      width: 100px;
+      height: 100px;
+      /* Bordure rondre */
+      border-radius: 50%;
+      /* Couleur de fond blanc */
+      background-color: #E6FAFC;
+    }
+
+    /* Permet de styler le lien dans le bouton */
+    .circle-button a {
+      /* Couleur du texte noire */
+      color: #0C0C0C;
+      /* Pas de soulignement */
+      text-decoration: none;
+      /* Décalage vers la gauche pour aligner le texte */
+      left: -5px;
+      /* Affichage en bloc pour prendre toute la place dans la bouton */
+      display: block;
+      /* Hauteur de la ligne et largeur pour prendre toute la place dans le bouton */
+      line-height: 90px;
+      width: 100%;
+    }
+
+    /* Permet de styler le trait avant le bouton */
+    .circle-button::before {
+      /* Vide pour pseudo element */
+      content: '';
+      /* Position absolue pour positionnement précis */
+      position: absolute;
+      /* Décalage vers le bas et horizontal au centre */
+      bottom: -30px;
+      left: 50%;
+      /* Décalage pour centrer le trait */
+      transform: translateX(-50%);
+      /* Largeur et hauteur */
+      width: 2px;
+      height: 50px;
+      /* Couleur noire */
+      background-color: #0C0C0C;
+    }
+
+    /* Permet de styler le contenu de la page */
+    .page-content {
+      /* Position relative pour positionnement précis */
+      position: relative;
+    }
+
+    /* Section hero */
+
+    /* Permet de styler une section hero 
+    Aligner le contenu verticalement et horizontalement */
+    .hero {
+      /* Position relative */
+      position: relative; 
+      /* Largeur de fenetre de visualisation de hauteur 100vh (viewport height)  */
+      width: 100%;  
+      height: 100vh;
+      display: flex;
+      align-items: left;
+      justify-content: left;
+      text-align: left;
+      overflow: hidden;
+      z-index: 20;
+    }
+
+    .hero::after{
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 30px;
+      background-color: inherit;
+      z-index: 30;
+    }
+
+
+    /* Permet de styler un élément vidéo dans la section hero */
+    .hero video {
+      /* Position absolue */
+      position: absolute; 
+      top: 50%;
+      left: 50%;
+      /* Permet de s'assurer que le rapport d'aspect soit maintenu */
+      min-width: 100%; 
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+
+    /* Permet de styler un titre H2 dans la section hero
+    Définit la taille de police, le poids et la couleur */
+    .hero h1 {
+      font-size: 6rem;
+      font-weight: bold;
+      color: #E6FAFC;
+      padding: 150px 50px 0px;
+
+    }
+
+    /* Permet de styler un bouton d'appel à l'action dans la section hero
+    Définit son affichage, régle les couleurs, taille de la police, poids, 
+    replissage, rayon de bordurde et transition */
+    .hero .cta-button {
+      /* Affichage en ligne pour le bouton, 
+      couleur fond rouge et couleur texte blanc */
+      display: inline-block;
+      background-color: #BF340D;
+      color: #E6FAFC;
+      /* Pas de soulignement */
+      text-decoration: none;
+      /* Police à 18 et texte en gras */
+      font-size: 18px;
+      font-weight: bold;
+      /* Rembourrage, marge et bordure ronde */
+      padding: 12px 24px;
+      margin: -100px 50px;
+      border-radius: 4px;
+      /* Superposition */
+      z-index: 0;
+    }
+
+    /* Permet de styler le bouton d'appel à l'action dans la section hero lorsque survolé
+    Change la couleur d'arrière plan */
+    .hero .cta-button:hover {
+      background-color: #99290B;
+    }
+
+    /* Header */
+
+    /* Permet de styler la section header */
+    .header {
+      /* Position fixe pour maintenir l'en-tête en place */
+      position: fixed;
+      /* Largeur et hauteur  */
+      width: 100%;
+      height: 60px;
+      /* Couleur de fond semi-transparente en noir */
+      background-color: rgba(0, 0, 0, 0.2);
+      /* Flexbox pour aligner les éléments horizontalement */
+      display: flex;
+      /* Alignement vertical au centre et horizontal à gauche  */
+      align-items: center;
+      justify-content: left;
+      /* Superposition pour être au-dessus */
+      z-index: 997;
+    }
+
+    /* Permet de styler le logo à l'interieur du header */
+    .header .logo {
+      /* Permet un décalage par rapport à position initiale */
+      position: relative;
+      /* Alignement horizontal */
+      display: flex;
+      /* Décalage, largeur et hauteur de 50px */
+      left: 50px;
+      width: 50px;
+      height: 50px;
+      /* Image du logo sans répétition et couvre son conteneur */
+      background-image: url('Images/logo.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      /* Bordure arrondie */
+      border-radius: 50%;
+    }
+
+    /* Permet de styler l'animation du logo dans le header */
+    .header .logo .animated-logo {
+      /* Permet un alignement précis, en haut et à gauche */
+      position: absolute;
+      top: 0;
+      left: 0;
+      /* Largeur et hauteur à 100% de la taille du conteneur parent */
+      width: 100%;
+      height: 100%;
+      /* Opacité à 0 pour masquer */
+      opacity: 0;
+      /*  */
+      pointer-events: none;
+      /* Bordure arrondie */ 
+      border-radius: 50%;
+    }
+
+    /* Permet de styler le logo lorsque survolé */
+    .header .logo:hover .animated-logo {
+      /* Opacité à 1 pour afficher la vidéo au survol */
+      opacity: 1;
+    }
+
+    /* Permet de styler la flèche de retour en haut */
+    .scroll-top-arrow {
+      /* Affichage en ligne pour la flèche */
+      display: inline-block;
+      /* Décalage et 50 depuis la droite et 93.5% depuis le haut */
+      right: 50px;
+      top: 93.5%;
+      /* Permet de maintenir la flèche en place */
+      position: fixed;
+      /* Couleur rouge. sans décoration, et taille 24 */
+      color: #EF481A;
+      text-decoration: none;
+      font-size: 24px;
+      /* Animation de 0.3s et une courbe d'accéleration */
+      transition: all 0.2s ease;
+    }
+
+    /* Permet de styler le défilement vers la parallaxe1 */
+    .scroll-to-parallax1 {
+      /*  Position fixe pour maintenir le bouton en place */
+      position: fixed;
+      /* Décalage de 10 pixels depuis la droite */
+      right: 10px;
+      /* Alignement vertical au milieu de l'écran */
+      top: 50%;
+      /* Centrer verticalement */
+      transform: translateY(-50%);
+      /* Aucune décoration et couleur blanc */
+      text-decoration: none;
+      color: #E6FAFC;
+      /* Rembourrage */
+      padding: 10px;
+      /* Bordure arrondie */
+      border-radius: 5px;
+      /* Police en gras */
+      font-weight: bold; 
+    }
+
+    /* Permet de styler la parallaxe 1 et 2 */
+    .parallax-1, .parallax-2{
+      /* Position relative pour positionnement précis */
+      position: relative;
+      /* Image fixe lors du défilement */
+      background-attachment: fixed;
+      /* Position au centre */
+      background-position: center;
+      /* Aucune répétition */
+      background-repeat: no-repeat;
+      /* Image couvre le conteneur */
+      background-size: cover;
+    }
+
+    /* Permet de styler la parallaxe 1 */
+    .parallax-1 {
+      /* image https://wallpapercrafter.com/623292-industry-technology-machine-3d-vehicle-robot-science.html*/
+      background-image: url("Images/img_parallax.png");
+      /* Hauteur de 100% de la hauteur de la fenêtre */
+      height: 100vh;
+    }
+
+    /* Permet de styler le bouton cta */
+    .parallax-1 .cta-button {
+      /* Affichage en ligne */
+      display: inline-block;
+      /* Couleur de fond rouge et couleur de texte blanc */
+      background-color: #BF340D;
+      color: #E6FAFC;
+      /* Pas de soulignement */
+      text-decoration: none;
+      /* Taille de police et police en gras */
+      font-size: 18px;
+      font-weight: bold;
+      /* Rembourrage 12px haut/bas et 24px gauche/droite */
+      padding: 12px 24px;
+      /* Bordure arrondie */
+      border-radius: 4px;
+      /* Superposition pour empêcher le chevauchement */
+      z-index: 0;
+    }
+
+    /* Permet de styler le bouton cta lorsque survolé */
+    .parallax-1 .cta-button:hover {
+      /* Couleur rouge foncé */
+      background-color: #99290B;
+    }
+
+    /* Permet de styler le texte de la parallaxe1 */
+    .parallax-1 .parallax-text {
+      /* Position absolue pour permettre un positionnement précis */
+      position: absolute;
+      /* Décalage haut et gauche */
+      top: 45%;
+      left: 50px;
+      /* Couleur noir */
+      color: #0C0C0C;
+      /* Largeur et hauteur */
+      width: 30%;
+      height: 50%;
+      /* Taille de la police */
+      font-size: 24px;
+      /* Aligner le texte à gauche */
+      text-align: left;
+      /* Police en demi-gras */
+      font-weight: 500;
+    }
+
+    /* Permet de styler la parallaxe 2 */
+    .parallax-2 {
+      /* image https://wallpapercrafter.com/623292-industry-technology-machine-3d-vehicle-robot-science.html */
+      background-image: url("Images/Powderbedfusion.png");
+      /* Hauteur de 100% de la hauteur de la fenêtre */
+      height: 100vh;
+    }
+
+    /* Permet de styler le bouton cta */
+    .parallax-2 .cta-button {
+      /* Affichage en ligne */
+      display: inline-block;
+      /* Couleur de fond rouge et couleur de texte blanc */
+      background-color: #BF340D;
+      color: #E6FAFC;
+      /* Pas de soulignement */
+      text-decoration: none;
+      /* Taille de police et police en gras */
+      font-size: 18px;
+      font-weight: bold;
+      /* Rembourrage 12px haut/bas et 24px gauche/droite */
+      padding: 12px 24px;
+      /* Bordure arrondie */
+      border-radius: 4px;
+      /* Superposition pour empêcher le chevauchement */
+      z-index: 0;
+    }
+
+    /* Permet de styler le bouton cta lorsque survolé */
+    .parallax-2 .cta-button:hover {
+      /* Couleur rouge foncé */
+      background-color: #99290B;
+    }
+
+    /* Permet de styler le H2 des parallaxes */
+    .parallax h2 {
+      /* Position absolue pour permettre un positionnement précis */
+      position: absolute;
+      /* Décalage haut et gauche */
+      top: 40%;
+      left: 50px;
+      /* Couleur rouge */
+      color: #BF340D;
+      /* Largeur et hauteur */
+      width: 50%;
+      height: 50%;
+      /* Police gras et taille 32px */
+      font-size: 32px;
+      font-weight: bold;
+      /* Alignement gaige */
+      text-align: left;
+    }
+
+    /* Permet de styler le texte de la parallaxe2 */
+    .parallax-2 .parallax-text {
+      /* Position absolue pour permettre un positionnement précis */
+      position: absolute;
+      /* Décalage haut et gauche */
+      top: 45%;
+      left: 50px;
+      /* Couleur noir */
+      color: #E6FAFC;
+      /* Largeur et hauteur */
+      width: 30%;
+      height: 50%;
+      /* Taille de la police */
+      font-size: 24px;
+      /* Aligner le texte à gauche */
+      text-align: left;
+      /* Police en demi-gras */
+      font-weight: 500;
+    }
+
+    /* Permet de styler le pied de page */
+    .footer {
+      /* Largeur, rembourrage, couleur fond noir, couleur texte blanc */
+      width: 100%;
+      padding: 30px 0;
+      background-color: #0C0C0C;
+      color: #E6FAFC;
+      /* Alignement du texte à gauche */
+      text-align: left;
+      /* Bordure supérieure de 5px et gris clair */
+      border-top: 5px solid #f8f8f8;
+      /* Ombre inférieure légère */
+      box-shadow: 0 -2px 0px rgba(0, 0, 0, 0.2);
+      /* Position relative pour positionnement précis */
+      position: relative;
+      /* Alignement vertical des éléments au centre */
+      align-items: center;
+    }
+
+    /* Permet de styler le droit d'auteur */
+    .footer .copyright {
+      /* Alignement central du texte et marge de 10 */
+      text-align: center;
+      margin: 10px;
+    }
+
+    

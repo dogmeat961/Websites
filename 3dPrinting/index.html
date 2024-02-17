@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="Sebastian Bucsa">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>3D Printing</title>
+  <link rel="stylesheet" href="style.css">
+  <!--
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      let isScrolling = false;
+      let targetPosition = 0;
+      let startPosition = 0;
+      let animationDuration = 500;
+      let startTime = null;
+
+      function smoothScroll(distance) {
+        startPosition = window.pageYOffset;
+        targetPosition = startPosition + distance; 
+
+        function animate(currentTime) {
+          if (startTime === null) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+          const progress = Math.min(timeElapsed / animationDuration, 1);
+          const easeProgress = progress < 0.5 ? 2 * progress * progress : (4 - 2 * progress) * progress - 1;
+          
+          window.scrollTo(0, startPosition + (targetPosition - startPosition) * easeProgress);
+          
+          if (timeElapsed < animationDuration) {
+            requestAnimationFrame(animate);
+          } else {
+            isScrolling = false;
+          }
+        }
+
+        if (!isScrolling) {
+          isScrolling = true;
+          startTime = null;
+          requestAnimationFrame(animate);
+        }
+      }
+
+      window.addEventListener('wheel', function(event) {
+        const cushionDistance = 850; // Change this value to adjust padding 
+        if (event.deltaY > 0) {
+          smoothScroll(cushionDistance);
+        } else if (event.deltaY < 0) {
+          smoothScroll(-cushionDistance);
+        }
+      });
+    });
+  </script>-->
+</head>
+
+<body>
+  <header>
+    <aside>
+      <!--Créer le menu Hamburger-->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-label">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!--Contenu du menu Hamburger-->
+      <nav class="menu">
+        <ul>
+          <!-- Lien vers la page d'accueil -->
+          <li><a href="index.html">Home</a></li>
+          <!-- Lien vers la page des plastiques -->
+          <li><a href="plastic.html">Plastics</a></li>
+          <!-- Lien vers la page des métaux -->
+          <li><a href="metal.html">Metals</a></li>
+          <!-- Lien vers la page de contact -->
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="header">
+      <a href="https://cubee3d.com/home" target="_blank">
+        <div class="logo">
+          <!-- Tiré de : https://giphy.com/gifs/3dprinting-cubee-cubee3d-KLcCwcwezU0epvcsb3 -->
+          <!-- Logo -->
+          <img class="animated-logo" src="Images/logo.gif" alt="Logo"> 
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <!-- Tiree de : https://www.youtube.com/watch?v=s4BOMHvWJWY&t=22s -->
+    <!-- Vidéo d'impression 3D en arrière-plan -->
+    <video src="Images/3dPrint.mp4" autoplay muted loop>
+    </video>
+    <div class="hero-content">
+      <!-- Titre de la section -->
+      <h1>3D PRINTING</h1>
+      <a href="https://3dprinting.com/what-is-3d-printing/" class="cta-button" target="_blank">Learn more</a>
+    </div>
+    <div class="circle-button">
+      <!-- Bouton pour découvrir -->
+      <a href="#first-parallax" class="scroll-to-parallax1">DISCOVER
+      </a>
+    </div>
+  </section>
+
+  <div class="page-content">
+    <article>
+      <div id="first-parallax" class="parallax-1">
+      <div class="parallax">
+        <!-- Titre de la première section -->
+        <h2>3D Polymerisation</h2>
+      </div>
+       <div class="parallax-text">
+        <!-- Description de la polymérisation 3D -->
+        <p>Process of creating three-dimensional objects by depositing layers of a polymer material one layer at a time</p>
+        <!-- Bouton pour en savoir plus -->
+        <a href="https://nexa3d.com/blog/3d-printing-with-polymers/" class="cta-button" target="_blank">Learn more</a>
+       </div>
+      </div>
+    </article>
+    <article>
+      <div id="second-parallax" class="parallax-2">
+        <div class="parallax">
+          <!-- Description de la fusion par lit de poudre -->
+          <h2>Powder Bed Fusion</h2>
+        </div>
+        <div class="parallax-text">
+          <p>A technique that uses laser, thermal energy or electron beam to melt and fuse material to form a 3D part</p>
+          <!-- Bouton pour en savoir plus -->
+          <a href="https://engineeringproductdesign.com/knowledge-base/powder-bed-fusion/" class="cta-button" target="_blank">Learn more</a>
+        </div>
+      </div>
+    </article>
+  </div>
+  <footer class="footer">
+    <div class="copyright">
+      <!-- Mention des droits d'auteur -->
+        Copyright &copy; 2023 Sebastian Bucsa. All rights reserved.
+      <aside>
+        <!-- Flèche de retour en haut de la page -->
+        <a href="#" class="scroll-top-arrow">&#x25B2;</a>
+      </aside>
+    </div>
+  </footer>
+</body>
+</html>

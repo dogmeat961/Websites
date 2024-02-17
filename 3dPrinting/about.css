@@ -1,0 +1,481 @@
+/* Met la police en Montserrat sans-serif pour le document entier, enlève les marges et le rembourrage par défaut */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Définit la propriété display à none en masquant l'élément */
+    .menu-toggle {
+      display: none;
+    }
+
+    /* Définit un défilement fluide */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Menu */
+
+    /* Permet de styler l'étiquette de menu */
+    .menu-label {
+      /* Position fixe pour garder l'étiquette en place */
+      position: fixed;
+      /* Décalage en haut et à droite */
+      top: 15px;
+      right: 50px;
+      /* Curseur en forme de pointeur */
+      cursor: pointer;
+      /* Taille de police à 30px */
+      font-size: 30px;
+      /* Superposition pour être au dessus de tout */
+      z-index: 999;
+    }
+
+    /* Permet de styler le span */
+    .menu-label span {
+      /* Affichage en bloc pour occuper une ligne distincte */
+      display: block;
+      /* Largeur de 30, hauteur de 4 et couleur blanc */
+      width: 30px;
+      height: 4px;
+      background-color: #EF481A;
+      /* Marge de 5 en haut et bas mais pas gauche et droite */
+      margin: 5px 0;
+      /* Animation de 0.3s et une courbe d'accéleration */
+      transition: all 0.3s ease;
+    }
+
+    .menu-label span:hover{
+      background-color: #BF340D;
+    }
+
+    /* Définit le premier enfant span de l'étiquette de menu lorsque le boutton est coché.
+    Permet ensuite d'appliquer un effet de rotation de 45 degrées */
+    .menu-toggle:checked ~ .menu-label span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+
+    /* Définit le deuxième enfant span de l'étiquette de menu lorsque le boutton est coché.
+    Permet ensuite d'appliquer un effet de pour faire disparître le boutton */
+    .menu-toggle:checked ~ .menu-label span:nth-child(2) {
+      opacity: 0;
+    }
+
+    /* Définit le troisième enfant span de l'étiquette de menu lorsque le boutton est coché.
+    Permet ensuite d'appliquer un effet de rotation à contre sens de 45 degrées */
+    .menu-toggle:checked ~ .menu-label span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+
+    /* Style de menu */
+    .menu {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      width: 200px;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.2);
+      transform: translateX(100%); /* Permet de déplacer vers la gauche */
+      transition: transform 0.3s ease; /* Prend 0.3 secondes pour se déplacer  */
+      z-index: 998;
+    }
+
+    /* Permet de créer une liste non ordonnée dans la classe de menu
+    Enlève les styles, la marge et le remplissage */
+    .menu ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Permet de définir les éléments de la liste dans la classe de menu
+    Ajoute un remplissage et une bordure inférieure */
+    .menu li {
+      padding: 10px;
+      border-bottom: 1px solid #E6FAFC ;
+    }
+
+    /* Permet de styler les éléments d'ancrage à l'interieur des élémentrs de liste de la classe de menu
+    Supprime la décoration de texte et définit la couleur du texte */
+    .menu li a {
+      text-decoration: none;
+      color: #E6FAFC;
+    }
+
+    /* Permet de déninir la clase de menu lorsque le bouton est coché */
+    .menu-toggle:checked ~ .menu {
+      transform: translateX(0%); /* Permet de déplacer vers la droite */
+    }
+
+    /* Header */
+
+    /* Permet de styler la section header */
+    .header {
+      position: fixed;
+      /* Alignement */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      /* Couleur de fond semi-transparent noir */
+      background-color: rgba(0, 0, 0, 0.2);
+      /* Aligner les elements horizontalement */
+      display: flex;
+      /* Alignement vertical au centre */
+      align-items: center;
+      /* Alignement horizontal a gauche */
+      justify-content: left;
+      /* Superposition au dessus de tout */
+      z-index: 997;
+    }
+
+    /* Permet de styler le logo à l'interieur du header */
+    .header .logo {
+      /* Permet un décalage par rapport à position initiale */
+      position: relative;
+      /* Alignement horizontal */
+      display: flex;
+      /* Décalage, largeur et hauteur de 50px */
+      left: 50px;
+      width: 50px;
+      height: 50px;
+      /* Image du logo sans répétition et couvre son conteneur */
+      background-image: url('Images/logo.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      /* Bordure arrondie */
+      border-radius: 50%;
+    }
+
+    /* Permet de styler l'animation du logo dans le header */
+    .header .logo .animated-logo {
+      /* Permet un alignement précis, en haut et à gauche */
+      position: absolute;
+      top: 0;
+      left: 0;
+      /* Largeur et hauteur à 100% de la taille du conteneur parent */
+      width: 100%;
+      height: 100%;
+      /* Opacité à 0 pour masquer */
+      opacity: 0;
+      /*  */
+      pointer-events: none;
+      /* Bordure arrondie */ 
+      border-radius: 50%;
+    }
+
+    /* Permet de styler le logo lorsque survolé */
+    .header .logo:hover .animated-logo {
+      /* Opacité à 1 pour afficher la vidéo au survol */
+      opacity: 1;
+    }
+
+    /* Permet de styler la séction héro */
+    .hero {
+      /* Largeur et hauteur à 100% de la fenêtre */
+      width: 100%;
+      height: 100vh;
+      /* Redimensionne l'image de fond pour couvrir la section 
+      et centrer l'image */
+      background-size: cover;
+      background-position: center;
+      /* Masque le contenu qui déborde 
+      et permet une position absolue à l'intérieur */
+      overflow: hidden;
+      position: relative;
+    }
+    
+    /* Permet de styler le contenu de la section héro */
+    .hero-content {
+      /* Position précise par rapport à la section héro */
+      position: absolute;
+      /* Décalage de 20px depuis le haut et 50px depuis la droite */
+      top: 20px;
+      right: 50px;
+      /* Largeur maximale pour limiter la largeur du contenu */
+      max-width: 400px;
+      /* Couleur blanc */
+      color: #E6FAFC;
+    }
+    
+    /* Permet de styler le titre à l'intérieur de la section héro */
+    .hero h1 {
+      /* Police à 6rem, gras, noir et marge inférieure de 40px */
+      font-size: 6rem;
+      font-weight: bold;
+      color: #0C0C0C;
+      margin-bottom: 40px;
+    }
+    
+    /* Permet de styler le bouton appel à l'action dans la section héro */
+    .hero .cta-button {
+      /* Affichage en ligne pour le bouton, 
+      couleur fond rouge et couleur texte blanc */
+      display: inline-block;
+      background-color: #BF340D;
+      color: #E6FAFC;
+      /* Remplissage de 10 en haut et bas, 20 à droite et à gauche */
+      padding: 10px 20px;
+      /* Pas de soulignement */
+      text-decoration: none;
+      /* bordure arrondie de 4px et police à 18 */
+      border-radius: 4px;
+      font-size: 18px;
+    }
+
+    /* Permet de styler le bouton d'appel à l'action dans la 
+    section héro lorsque survolé
+    Change la couleur d'arrière plan */
+    .hero .cta-button:hover {
+      background-color: #99290B;
+    }
+
+    /* Permet de styler la flèche de retour en haut */
+    .scroll-top-arrow {
+      /* Affichage en ligne pour la flèche */
+      display: inline-block;
+      /* Décalage et 50 depuis la droite et 93.5% depuis le haut */
+      right: 50px;
+      top: 93.5%;
+      /* Permet de maintenir la flèche en place */
+      position: fixed;
+      /* Couleur rouge. sans décoration, et taille 24 */
+      color: #EF481A;
+      text-decoration: none;
+      font-size: 24px;
+      /* Animation de 0.3s et une courbe d'accéleration */
+      transition: all 0.2s ease;
+    }
+
+    /* Permet de styler l'introduction */
+    .introduction {
+      /* Aligner au centre, rembourrer de 1px, 
+      couleur gris clair, noir et taille de 24px */
+      text-align: center;
+      padding: 1px;
+      background-color: #f2f2f2;
+      color: #0C0C0C;
+      font-size: 24px;
+    }
+
+    /* Permet de styler le paragraphe dans l'introduction */
+    .introduction p {
+      /* Décallage de 50 depuis la gauche et 50 depuis la droite */
+      left: 50px;
+      right: 50px;
+    }
+
+    /* Permet de styler la grille */
+    .grid {
+      /* Affichage en grille */
+      display: grid;
+      /* Deux colonnes de largeur égale */
+      grid-template-columns: 1fr 1fr;
+      /* Quattre lignes de hauteur égale */
+      grid-template-rows: repeat(4, 1fr);
+      /* Largeur max de 100%, marge gauche auto, 
+      marge droite auto et marge supérieure */
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 5px;
+      /* Espacement de 5 entre les éléments de la grille */
+      gap: 5px ;
+    }
+
+    /* Permet de styler les titres h3 dans la grille */
+    .grid h3 {
+      /* Police en gras */
+      font-weight: bold;
+    }
+
+    /* Permet de styler les éléments de la grille */
+    .grid-item  {
+      /* Rembourrage de 50, couleur gris clair et texte noir */
+      padding: 50px;
+      background-color: #f2f2f2;
+      color: #0C0C0C;
+    }
+
+    /* Permet de styler le contenu d'image */
+    .grid-image-container {
+      /* Aligner horizontalement */
+      display: flex;
+      /* Alignement vertical et horizontal au centre */
+      align-items: center;
+      justify-content: center;
+      /* Largeur de 100% */
+      width: 100%;
+    }
+
+    /* Permet de styler les images */
+    .grid-image {
+      /* Hauteur, largeur et hauteur maximale */
+      height: 650px;
+      max-width: 100%;
+      max-height: 100%;
+      /* Ajuster l'image dynamiquement à l'intérieur du conteneur */
+      object-fit: contain;
+    }
+
+    /* Permet de styler le conteneur de texte aligné à gauche */
+    .text-container-left {
+      /* Alignement justifié et largeur maximale à 80% */
+      text-align: justify;
+      max-width: 80%;
+    }
+
+    /* Permet de styler le conteneur de texte aligné à gauche */
+    .text-container-right {
+      /* Alignement justifié, largeur maximale à 80% et rembourrage à gauche */
+      text-align: justify;
+      max-width: 80%;
+      padding-left: 250px;
+    }
+
+    /* Permet de styler le pied de page */
+    .footer {
+      /* Largeur, rembourrage, couleur fond noir, couleur texte blanc */
+      width: 100%;
+      padding: 30px 0;
+      background-color: #0C0C0C;
+      color: #E6FAFC;
+      /* Alignement du texte à gauche */
+      text-align: left;
+      /* Bordure supérieure de 5px et gris clair */
+      border-top: 5px solid #f8f8f8;
+      /* Ombre inférieure légère */
+      box-shadow: 0 -2px 0px rgba(0, 0, 0, 0.2);
+      /* Position relative pour positionnement précis */
+      position: relative;
+      /* Alignement vertical des éléments au centre */
+      align-items: center;
+    }
+
+    /* Permet de styler le droit d'auteur */
+    .footer .copyright {
+      /* Alignement central du texte et marge de 10 */
+      text-align: center;
+      margin: 10px;
+    }
+
+    /* Start of the contact form */
+
+    /* Permet de styler le conteneur */
+    .container {
+      /* Position relative pour positionnement précis */
+      position: relative;
+      /* Marge supérieure et inférieure de 13vh et horizontale auto */
+      margin: 13vh auto;
+      /* Largeur et rembourrage, couleur blanc et bordure arrondie */
+      max-width: 500px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+    }
+
+    /* Permet de styler l'image de fond */
+    .background-image {
+      /* Position absolue pour couvir le conteneur */
+      position: absolute;
+      /* Alignement haut et gauche */
+      top: 0;
+      left: 0;
+      /* Largeur et hauteur */
+      width: 100%;
+      height: 100vh;
+      /* Superposition inférieur pour image */
+      z-index: -1;
+      /* Tirée de : https://unsplash.com/s/photos/3d-printing */
+      background-image: url('Images/back.jpg');
+      /* Pas de répétition et couvir le conteneur */
+      background-repeat: no-repeat;
+      background-size: cover;
+      /* Filtre flou pour l'image de fond */
+      filter: blur(5px);
+    }
+
+    /* Permet de styler le H2 */
+    h2 {
+      /* Alignement central et marge inférieure */
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Permet de styler le groupe du formulaire */
+    .form-group {
+      /* Marge inférieure pour le groupe du formulaire */
+      margin-bottom: 20px;
+    }
+
+    /* Permet de styler le label */
+    label {
+      /* Affichage en bloc, marge inférieure et police en gras */
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    /* Permet de styler le champ de saisie */
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      /* Largeur, rembourrage, bordure arrondie, 
+      bordure solide noire */
+      width: 95.6%;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    /* Permet de styler le champ de texte */
+    textarea {
+      /* Redimensionnement vertical autorisé et hauteur de 100px */
+      resize: vertical;
+      height: 100px;
+    }
+
+    /* Permet de styler le groupe de cases à chocher */
+    .checkbox-group {
+      /* Marge supérieure et inférieure */
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* Permet de styler le label du groupe de cases à cocher */
+    .checkbox-group label {
+      /* Affichage en ligne et marge droite */
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    /* Permet de styler la zone de texte de demande */
+    .request-textbox {
+      /* Masquer la zone de texte */
+      display: none;
+    }
+
+    /* Permet de styler le bouton de soumission */
+    .submit-button {
+      /* Largeur et rembourrage */
+      width: 100%;
+      padding: 10px;
+      /* Bordure arrondie  */
+      border-radius: 4px;
+      /* Sans bordure */
+      border: none;
+      /* Couleur de fond rouge et couleur de texte blanc */
+      background-color: #BF340D;
+      color: #E6FAFC;
+      /* Taille du texte et curseur en forme de pointeur */
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* Permet de styler le bouton lorsque survolé */
+    .submit-button:hover {
+      /* Couleur de fond plus foncée au survol */
+      background-color: #99290B;
+    }
